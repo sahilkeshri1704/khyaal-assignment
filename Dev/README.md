@@ -53,8 +53,8 @@ Follow these steps to provision the infrastructure:
 
 2.  **Clone the Repository:**
     ```bash
-    git clone <https://github.com/sahilkeshri1704/khyaal-assignment.git>
-    cd <khyaal-assignment>
+    git clone https://github.com/sahilkeshri1704/khyaal-assignment.git
+    cd khyaal-assignment
     ```
 
 3.  **Configure Terraform Variables:**
@@ -81,7 +81,7 @@ Follow these steps to provision the infrastructure:
 7.  **Configure `kubectl`:**
     Once the EKS cluster is created, you need to configure `kubectl` to interact with it. This typically involves updating your `kubeconfig` file using the AWS CLI:
     ```bash
-    aws eks update-kubeconfig --name <mumbai-eks-cluster> --region <ap-south-1>
+    aws eks update-kubeconfig --name mumbai-eks-cluster --region ap-south-1
     ```
     Replace `<your_cluster_name>` and `<your_aws_region>` with your actual values.
 
@@ -104,7 +104,6 @@ Follow these steps to provision the infrastructure:
     kubectl apply -f main.tf
     ```
 
-
 ## Cost Optimization Strategies
 
 Several strategies have been considered for cost optimization:
@@ -120,7 +119,7 @@ Several strategies have been considered for cost optimization:
 
 ## Deliverables
 
-* **GitHub Repository Link:** `<https://github.com/sahilkeshri1704/khyaal-assignment>`
+* **GitHub Repository Link:** `https://github.com/sahilkeshri1704/khyaal-assignment`
 * **Architecture Diagram:** `architecture.pdf` (Conceptual diagram illustrating the components and their interactions).
 
 This `README.md` provides a comprehensive overview of the deployed infrastructure, the rationale behind the architectural decisions, detailed steps for reproduction, and key considerations for cost optimization.
