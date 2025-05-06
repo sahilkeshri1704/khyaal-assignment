@@ -17,8 +17,44 @@ spec:
       containers:
         - name: node-backend-container
           image: node:18-alpine
+          resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
           ports:
             - containerPort: 3000 # Or the port your backend uses
           env:
             - name: MONGODB_URI
               value: "mongodb://mongodb-service:27017/mydb" # Assuming mongodb-service is your MongoDB Kubernetes Service name
+
+---
+
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: node-backend 
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: node-backend
+  minReplicas: 1
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: Pods
+     pods:
+       metric:
+         name: packets-per-second
+       target:
+         type: AverageValue
+         averageValue: 1k
+      
+
+              
